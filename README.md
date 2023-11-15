@@ -1,8 +1,11 @@
 # DigCrawler
 
 > **Status**: Em desenvolvimento
-
+> 
 > **Versão do Python**: 3.9.X
+
+## Objetivo
+Agilizar o processo de pesquisa de preço de mercado de itens especificados pelo usuário (por enquanto funcionando apenas com o Mercado Livre)
 
 ## Para Rodar na Sua Máquina
 No terminal integrado do IDE ou no seu CMD, usando o pip, instale as bibliotecas necessárias:
