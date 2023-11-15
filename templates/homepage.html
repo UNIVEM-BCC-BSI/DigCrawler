@@ -3,19 +3,29 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="{{ url_for('static', filename="css/style.css")}}">
-    <link rel="icon" href="{{ url_for('static', filename="images/logo.jpg")}}" type="image/jpg">
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN"
+      crossorigin="anonymous"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="{{ url_for('static',
+    filename="css/style.css")}}"> <link rel="icon" href="{{ url_for('static',
+    filename="images/logo.jpg")}}" type="image/jpg">
     <title>Buscador de Preços</title>
   </head>
   <body>
     <div class="container">
       <div class="d-flex p-2 header">
         <div class="d-flex align-items-center gap-2">
-          <img src={{ url_for('static', filename="images/logo.jpg")}} class="rounded-5 img-fluid" alt="Logo da Página">
+          <img src={{ url_for('static', filename="images/logo.jpg")}}
+          class="rounded-5 img-fluid" alt="Logo da Página">
           <h1>BUSCADOR DE PREÇOS</h1>
         </div>
         <div class="media_precos">
@@ -23,16 +33,35 @@
           <p class="media_precos_valor">R${{ media_precos }}</p>
         </div>
       </div>
-      
-      <form id="searchForm">
+
+      <form action="/pesquisa" method="POST" id="searchForm">
         <div class="form-group">
           <label for="searchInput">Pesquisar Produto:</label>
           <div class="input-group">
-            <input type="text" class="form-control border border-black" id="searchInput" placeholder="Digite o nome do produto">
+            <input
+              type="text"
+              class="form-control border border-black"
+              name="produto_descricao"
+              id="searchInput"
+              placeholder="Digite o nome do produto"
+            />
             <div class="input-group-append">
-              <button class="btn btn-outline-secondary" type="button" id="searchBtn">
-                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
-                  <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"/>
+              <button
+                class="btn btn-outline-secondary"
+                type="submit"
+                id="searchBtn"
+              >
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="16"
+                  height="16"
+                  fill="currentColor"
+                  class="bi bi-search"
+                  viewBox="0 0 16 16"
+                >
+                  <path
+                    d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"
+                  />
                 </svg>
               </button>
             </div>
@@ -43,23 +72,25 @@
       <table class="table table-striped table-responsive table-bordered mt-3">
         <thead class="thead-default">
           <tr>
-            <th>ID</th>
             <th>Descrição</th>
             <th>Preço</th>
           </tr>
         </thead>
         <tbody>
-          {% for produto in result %}
+          {% for produto in produtos %}
           <tr>
-            <td>{{ produto[0] }}</td>
-            <td>{{ produto[1] }}</td>
-            <td>R${{ produto[2] }}</td>
+            <td>{{ produto.descricao }}</td>
+            <td>{{ produto.preco }}</td>
           </tr>
           {% endfor %}
         </tbody>
       </table>
     </div>
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
+      crossorigin="anonymous"
+    ></script>
   </body>
 </html>
